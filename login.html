@@ -1,39 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login</title>
-  <link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Page</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h2>Login</h2>
-  <form id="loginForm">
-    <input type="email" id="email" placeholder="Email" required><br>
-    <input type="password" id="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-  </form>
+  <div class="container">
+    <h2>Login Page</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required /><br />
+      <input type="password" id="loginPassword" placeholder="Password" required /><br />
+      <button type="submit">Login</button>
+    </form>
 
-  <script>
-    const form = document.getElementById("loginForm")
-    form.onsubmit = function (e) {
-      e.preventDefault()
-      const email = document.getElementById("email").value
-      const password = document.getElementById("password").value
-      const storedUser = JSON.parse(localStorage.getItem("user"))
+    <div id="welcomeMessage" style="display: none;">
+      <h3 id="greeting"></h3>
+      <button id="logout">Logout</button>
+    </div>
+    <p>Don’t have an account? <a href="index.html">Sign up</a></p>
+  </div>
 
-      if (!storedUser) {
-        alert("No user found")
-        return
-      }
-
-      if (email === storedUser.email && password === storedUser.password) {
-        sessionStorage.setItem("isLoggedIn", "true")
-        window.location.href = "welcome.html"
-      } else {
-        alert("Invalid credentials")
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
