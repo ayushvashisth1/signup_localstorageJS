@@ -12,17 +12,37 @@
     <form id="loginForm">
       <input type="email" id="loginEmail" placeholder="Email" required /><br />
       <input type="password" id="loginPassword" placeholder="Password" required /><br />
-      <button onclick="window.location.href='library.html'">login</button>
-
+      <button type="button" onclick="login()">Login</button>
     </form>
+
+    <p id="errorMessage" style="color: red;"></p>
 
     <div id="welcomeMessage" style="display: none;">
       <h3 id="greeting"></h3>
       <button id="logout">Logout</button>
     </div>
+
     <p>Don’t have an account? <a href="index.html">Sign up</a></p>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // Example: pre-saving email/password for demo (normally, do this during sign-up)
+    localStorage.setItem("email", "test@example.com");
+    localStorage.setItem("password", "1234");
+
+    function login() {
+      const emailInput = document.getElementById("loginEmail").value.trim();
+      const passwordInput = document.getElementById("loginPassword").value.trim();
+
+      const storedEmail = localStorage.getItem("email");
+      const storedPassword = localStorage.getItem("password");
+
+      if (emailInput === storedEmail && passwordInput === storedPassword) {
+        window.location.href = "library.html";
+      } else {
+        document.getElementById("errorMessage").textContent = "Invalid email or password.";
+      }
+    }
+  </script>
 </body>
 </html>
