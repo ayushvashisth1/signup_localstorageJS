@@ -25,23 +25,20 @@
     <p>Don’t have an account? <a href="index.html">Sign up</a></p>
   </div>
 
-  <script>
-    localStorage.setItem("email", "test@example.com");
-    localStorage.setItem("password", "1234");
+ <script>
+  function login() {
+    const emailInput = document.getElementById("loginEmail").value.trim();
+    const passwordInput = document.getElementById("loginPassword").value.trim();
 
-    function login() {
-      const emailInput = document.getElementById("loginEmail").value.trim();
-      const passwordInput = document.getElementById("loginPassword").value.trim();
+    const storedUser = JSON.parse(localStorage.getItem("user"));
 
-      const storedEmail = localStorage.getItem("email");
-      const storedPassword = localStorage.getItem("password");
-
-      if (emailInput === storedEmail && passwordInput === storedPassword) {
-        window.location.href = "library.html";
-      } else {
-        document.getElementById("errorMessage").textContent = "Invalid email or password.";
-      }
+    if (storedUser && emailInput === storedUser.email && passwordInput === storedUser.password) {
+      window.location.href = "library.html";
+    } else {
+      document.getElementById("errorMessage").textContent = "Invalid email or password.";
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
