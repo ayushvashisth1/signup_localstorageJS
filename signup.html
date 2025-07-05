@@ -17,36 +17,36 @@
   </form>
   <button onclick="clearData()">Clear Data</button>
 
-  <script>
-  const form = document.getElementById("signupForm");
-  form.onsubmit = function (e) {
-    e.preventDefault();
-    const fullName = document.getElementById("fullName").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+<script>
+    const form = document.getElementById("signupForm");
+    form.onsubmit = function (e) {
+      e.preventDefault();
+      const fullName = document.getElementById("fullName").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
-      return;
-    }
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
 
-    const user = {
-      fullName: fullName,
-      email: email,
-      password: password
+      const user = {
+        fullName: fullName,
+        email: email,
+        password: password
+      };
+
+      localStorage.setItem("user", JSON.stringify(user));
+      alert("Signup successful");
+      window.location.href = "login.html";
     };
 
-    localStorage.setItem("user", JSON.stringify(user));
-    alert("Signup successful");
-    window.location.href = "login.html";
-  };
-
-  function clearData() {
-    localStorage.removeItem("user");
-    alert("User data deleted");
-  }
-</script>
+    function clearData() {
+      localStorage.removeItem("user");
+      alert("User data deleted");
+    }
+  </script>
 
 </body>
 </html>
